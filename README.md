@@ -27,12 +27,8 @@ yarn add @fnando/cpf
 ## Usage
 
 ```js
-// Node.js-specific
-const cpf = require("@fnando/cpf/dist/node");
-
-// @import
 import * as cpf from "@fnando/cpf"; // import the whole library
-import {isValid as isValidCpf} from "@fnando/cpf"; // import just one function
+import { isValid as isValidCpf } from "@fnando/cpf"; // import just one function
 
 // import via <script>; the lib will available as window.cpf
 // <script src="cpf.js"></script>
