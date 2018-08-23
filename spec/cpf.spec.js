@@ -14,7 +14,6 @@ describe("CPF", () => {
     expect(cpf.isValid("77777777777")).not.to.be.ok;
     expect(cpf.isValid("88888888888")).not.to.be.ok;
     expect(cpf.isValid("99999999999")).not.to.be.ok;
-    expect(cpf.isValid("12345678909")).not.to.be.ok;
   });
 
   it("rejects falsy values", () => {
