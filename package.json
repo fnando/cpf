@@ -1,6 +1,6 @@
 {
   "name": "@fnando/cpf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Validate, generate and format CPF numbers",
   "main": "dist/cpf.js",
   "module": "src/cpf.js",
