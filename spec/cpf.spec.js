@@ -33,6 +33,7 @@ describe("CPF", () => {
 
   it("validates messed strings", () => {
     expect(cpf.isValid("295$379\n955...93")).to.be.ok;
+    expect(cpf.isValid(" 295$379 955\n\s93 ")).to.be.ok;
   });
 
   it("strictly validates strings", () => {
@@ -42,8 +43,9 @@ describe("CPF", () => {
   });
 
   it("returns stripped number", () => {
-    var number = cpf.strip("295.379.955-93");
-    expect(number).to.eql("29537995593");
+    expect(cpf.strip("295.379.955-93")).to.eql("29537995593");
+    expect(cpf.strip("295a379b955c93")).to.eql("29537995593");
+    expect(cpf.strip("295a379b955c93", true)).to.not.eql("29537995593");
   });
 
   it("returns formatted number", () => {
