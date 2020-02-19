@@ -5,12 +5,6 @@
   "main": "es/index.js",
   "module": "es/index.js",
   "types": "es/index.d.ts",
-  "files": [
-    "src/**/*",
-    "dist/**/*",
-    "README.md",
-    "LICENSE"
-  ],
   "scripts": {
     "lint": "yarn eslint src",
     "test": "yarn jest",
