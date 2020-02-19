@@ -1,0 +1,11 @@
+{
+  "extends": "@fnando/codestyle/package",
+  "include": ["src"],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "lib": ["esnext"],
+    "declaration": true,
+    "declarationDir": "es",
+    "outDir": "es"
+  }
+}

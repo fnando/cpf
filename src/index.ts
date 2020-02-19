@@ -9,7 +9,7 @@ const REJECT_LIST = [
   "66666666666",
   "77777777777",
   "88888888888",
-  "99999999999"
+  "99999999999",
 ];
 
 const STRICT_STRIP_REGEX = /[.-]/g;
@@ -24,23 +24,23 @@ const LOOSE_STRIP_REGEX = /[^\d]/g;
  * @param {string} numbers a string with only numbers.
  * @returns {number} the verifier digit.
  */
-export function verifierDigit(numbers) {
-  numbers = numbers
-    .split("")
-    .map(function(number){ return parseInt(number, 10); })
-  ;
+export function verifierDigit(numbers: string): number {
+  const numberList = numbers.split("").map(function(number) {
+    return parseInt(number, 10);
+  });
 
-  const modulus = numbers.length + 1;
+  const modulus = numberList.length + 1;
 
-  const multiplied = numbers.map(function(number, index) {
+  const multiplied = numberList.map(function(number, index) {
     return number * (modulus - index);
   });
 
-  const mod = multiplied.reduce(function(buffer, number){
-    return buffer + number;
-  }) % 11;
+  const mod =
+    multiplied.reduce(function(buffer, number) {
+      return buffer + number;
+    }) % 11;
 
-  return (mod < 2 ? 0 : 11 - mod);
+  return mod < 2 ? 0 : 11 - mod;
 }
 
 /**
@@ -56,7 +56,7 @@ export function verifierDigit(numbers) {
  * @param {string} cpf the CPF.
  * @returns {string} the formatted CPF.
  */
-export function format(cpf) {
+export function format(cpf: string): string {
   return strip(cpf).replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4");
 }
 
@@ -77,7 +77,7 @@ export function format(cpf) {
  *                             Otherwise, it will remove all non-digit (`[^\d]`) characters. Optional.
  * @returns {string} the stripped CPF.
  */
-export function strip(cpf, isStrict) {
+export function strip(cpf: string, isStrict = false): string {
   const regex = isStrict ? STRICT_STRIP_REGEX : LOOSE_STRIP_REGEX;
   return (cpf || "").toString().replace(regex, "");
 }
@@ -90,17 +90,23 @@ export function strip(cpf, isStrict) {
  * @param {boolean} [isStrict] if `true`, it will accept only `digits`, `.` and `-` characters. Optional.
  * @returns {boolean} `true` if CPF is valid. Otherwise, `false`.
  */
-export function isValid(cpf, isStrict) {
+export function isValid(cpf: string, isStrict: boolean = false): boolean {
   const stripped = strip(cpf, isStrict);
 
   // CPF must be defined
-  if (!stripped) { return false; }
+  if (!stripped) {
+    return false;
+  }
 
   // CPF must have 11 chars
-  if (stripped.length !== 11) { return false; }
+  if (stripped.length !== 11) {
+    return false;
+  }
 
   // CPF can't be blacklisted
-  if (REJECT_LIST.includes(stripped)) { return false; }
+  if (REJECT_LIST.includes(stripped)) {
+    return false;
+  }
 
   let numbers = stripped.substr(0, 9);
   numbers += verifierDigit(numbers);
@@ -116,7 +122,7 @@ export function isValid(cpf, isStrict) {
  * @param {boolean} [useFormat] if `true`, it will format using `.` and `-`. Optional.
  * @returns {string} the CPF.
  */
-export function generate(useFormat) {
+export function generate(useFormat: boolean = false): string {
   let numbers = "";
 
   for (let i = 0; i < 9; i += 1) {
@@ -126,5 +132,5 @@ export function generate(useFormat) {
   numbers += verifierDigit(numbers);
   numbers += verifierDigit(numbers);
 
-  return (useFormat ? format(numbers) : numbers);
+  return useFormat ? format(numbers) : numbers;
 }

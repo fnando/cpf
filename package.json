@@ -2,8 +2,9 @@
   "name": "@fnando/cpf",
   "version": "0.1.1",
   "description": "Validate, generate and format CPF numbers",
-  "main": "dist/cpf.js",
-  "module": "src/cpf.js",
+  "main": "es/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
   "files": [
     "src/**/*",
     "dist/**/*",
@@ -12,11 +13,11 @@
   ],
   "scripts": {
     "lint": "yarn eslint src",
-    "test": "yarn lint && mocha --require babel-core/register spec",
-    "js:dist:expanded": "webpack --mode=development --target=web",
-    "js:dist:minified": "NODE_ENV=production webpack --mode=production --target=web",
-    "js:dist:node": "webpack --config ./webpack.config.node.js --mode=development --target=node",
-    "dist": "rm -rf dist && yarn test && yarn js:dist:expanded && yarn js:dist:minified && yarn js:dist:node"
+    "test": "yarn jest",
+    "js:dist": "tsc",
+    "js:dist:web": "webpack --entry ./es/index.js --output ./web/cpf.min.js --mode production --target web --output-library-export var --output-library CPF --devtool source-map",
+    "js:dist:node": "webpack --entry ./es/index.js --output ./commonjs/index.js --mode production --target node --output-library-target commonjs --devtool source-map",
+    "dist": "rm -rf {es,commonjs,web} && yarn test && yarn js:dist && yarn js:dist:web && yarn js:dist:node"
   },
   "repository": {
     "type": "git",
@@ -32,14 +33,18 @@
     "url": "https://github.com/fnando/cpf/issues"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
-    "babel-loader": "7.1.4",
-    "babel-preset-env": "1.6.1",
-    "chai": "4.1.2",
-    "eslint": "4.19.1",
-    "mocha": "5.0.5",
-    "uglifyjs-webpack-plugin": "1.2.4",
-    "webpack": "4.4.1",
-    "webpack-cli": "2.0.13"
+    "@babel/types": "7.8.3",
+    "@fnando/codestyle": "0.0.10",
+    "@fnando/eslint-config-codestyle": "0.0.7",
+    "@types/jest": "25.1.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "jest": "25.1.0",
+    "jest-filename-transform": "^0.1.0",
+    "ts-jest": "25.2.1",
+    "typescript": "3.7.5",
+    "webpack": "*",
+    "webpack-cli": "*"
   }
 }

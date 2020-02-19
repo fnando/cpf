@@ -6,13 +6,17 @@
 ![Minified size](http://img.badgesize.io/fnando/cpf/master/dist/cpf.min.js.svg?label=cpf+min+size)
 ![Minified+Gzip size](http://img.badgesize.io/fnando/cpf/master/dist/cpf.min.js.svg?compression=gzip&label=cpf+min%2Bgzip+size)
 
-This package does some [CPF](http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas) magic. It allows you to create, validate and format CPF documents.
+This package does some
+[CPF](http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas) magic. It
+allows you to create, validate and format CPF documents.
 
-**HINT:** Check out the CNPJ counter part available at <https://github.com/fnando/cnpj>.
+**HINT:** Check out the CNPJ counter part available at
+<https://github.com/fnando/cnpj>.
 
 ## Installation
 
-This lib is available as a NPM package. To install it, use the following command:
+This lib is available as a NPM package. To install it, use the following
+command:
 
 ```
 npm install @fnando/cpf --save
@@ -28,11 +32,11 @@ yarn add @fnando/cpf
 
 ```js
 // Node.js-specific
-const cpf = require("@fnando/cpf/dist/node");
+const cpf = require("@fnando/cpf/commonjs");
 
 // @import
 import * as cpf from "@fnando/cpf"; // import the whole library
-import {isValid as isValidCpf} from "@fnando/cpf"; // import just one function
+import { isValid as isValidCpf } from "@fnando/cpf"; // import just one function
 
 // import via <script>; the lib will available as window.cpf
 // <script src="cpf.js"></script>
@@ -56,9 +60,12 @@ cpf.generate(); // generate unformatted number
 //=> 72777632898
 ```
 
+On the web, without transformation, just use `web/cpf.min.js`.
+
 ### Strict Validation
 
-By default, validations will strip any characters you provide. This means that the following is valid, because only numbers will be considered:
+By default, validations will strip any characters you provide. This means that
+the following is valid, because only numbers will be considered:
 
 ```js
 cpf.isValid("101#688!!!!!!542......36");

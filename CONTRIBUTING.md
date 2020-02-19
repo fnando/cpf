@@ -9,4 +9,6 @@ Once you've made your great commits (include tests, please):
 
 That's it!
 
-Please respect the indentation rules and code style. And use 2 spaces, not tabs. And don't touch the version thing or distribution files; this will be made when a new version is going to be released.
+Please respect the indentation rules and code style. And use 2 spaces, not tabs.
+And don't touch the version thing or distribution files; this will be made when
+a new version is going to be released.
