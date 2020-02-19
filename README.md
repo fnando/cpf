@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/fnando/cpf.svg?branch=master)](https://travis-ci.org/fnando/cpf)
 [![NPM package version](https://img.shields.io/npm/v/@fnando/cpf.svg)](https://www.npmjs.com/package/@fnando/cpf)
 ![License: MIT](https://img.shields.io/npm/l/@fnando/cpf.svg)
-![Minified size](http://img.badgesize.io/fnando/cpf/master/dist/cpf.min.js.svg?label=cpf+min+size)
-![Minified+Gzip size](http://img.badgesize.io/fnando/cpf/master/dist/cpf.min.js.svg?compression=gzip&label=cpf+min%2Bgzip+size)
+![Minified size](http://img.badgesize.io/fnando/cpf/master/web/cpf.min.js.svg?label=cpf+min+size)
+![Minified+Gzip size](http://img.badgesize.io/fnando/cpf/master/web/cpf.min.js.svg?compression=gzip&label=cpf+min%2Bgzip+size)
 
 This package does some
 [CPF](http://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas) magic. It
