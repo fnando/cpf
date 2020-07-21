@@ -63,7 +63,7 @@ export function format(cpf: string): string {
  * strip('29537995593'); // Result: '29537995593'
  * strip('295.379.955-93'); // Result: '29537995593'
  * strip('295a379b9c5d59e3'); // Result: '29537995593'
- * strip('295a379b9c5d59e3', true); // Result: '295a379b9c5d59e3' - Atention!
+ * strip('295a379b9c5d59e3', true); // Result: '295a379b9c5d59e3' - Attention!
  * ```
  *
  * @export
