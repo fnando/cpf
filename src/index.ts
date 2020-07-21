@@ -25,20 +25,15 @@ const LOOSE_STRIP_REGEX = /[^\d]/g;
  * @returns {number} the verifier digit.
  */
 export function verifierDigit(numbers: string): number {
-  const numberList = numbers.split("").map(function(number) {
-    return parseInt(number, 10);
-  });
+  const numberList = numbers.split("").map((number) => parseInt(number, 10));
 
   const modulus = numberList.length + 1;
 
-  const multiplied = numberList.map(function(number, index) {
-    return number * (modulus - index);
-  });
+  const multiplied = numberList.map(
+    (number, index) => number * (modulus - index),
+  );
 
-  const mod =
-    multiplied.reduce(function(buffer, number) {
-      return buffer + number;
-    }) % 11;
+  const mod = multiplied.reduce((buffer, number) => buffer + number) % 11;
 
   return mod < 2 ? 0 : 11 - mod;
 }
@@ -103,7 +98,6 @@ export function isValid(cpf: string, isStrict: boolean = false): boolean {
     return false;
   }
 
-  // CPF can't be blacklisted
   if (REJECT_LIST.includes(stripped)) {
     return false;
   }
