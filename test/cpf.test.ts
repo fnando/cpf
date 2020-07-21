@@ -1,6 +1,6 @@
-import * as cpf from "../src";
+import * as cpf from "../src/index";
 
-it("blacklists common numbers", () => {
+it("rejects common numbers", () => {
   expect(cpf.isValid("00000000000")).toBeFalsy();
   expect(cpf.isValid("11111111111")).toBeFalsy();
   expect(cpf.isValid("22222222222")).toBeFalsy();
