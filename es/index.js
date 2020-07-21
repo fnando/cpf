@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.generate = exports.isValid = exports.strip = exports.format = exports.verifierDigit = void 0;
 // Reject common values.
 var REJECT_LIST = [
     "00000000000",
@@ -25,16 +26,10 @@ var LOOSE_STRIP_REGEX = /[^\d]/g;
  * @returns {number} the verifier digit.
  */
 function verifierDigit(numbers) {
-    var numberList = numbers.split("").map(function (number) {
-        return parseInt(number, 10);
-    });
+    var numberList = numbers.split("").map(function (number) { return parseInt(number, 10); });
     var modulus = numberList.length + 1;
-    var multiplied = numberList.map(function (number, index) {
-        return number * (modulus - index);
-    });
-    var mod = multiplied.reduce(function (buffer, number) {
-        return buffer + number;
-    }) % 11;
+    var multiplied = numberList.map(function (number, index) { return number * (modulus - index); });
+    var mod = multiplied.reduce(function (buffer, number) { return buffer + number; }) % 11;
     return mod < 2 ? 0 : 11 - mod;
 }
 exports.verifierDigit = verifierDigit;
@@ -63,7 +58,7 @@ exports.format = format;
  * strip('29537995593'); // Result: '29537995593'
  * strip('295.379.955-93'); // Result: '29537995593'
  * strip('295a379b9c5d59e3'); // Result: '29537995593'
- * strip('295a379b9c5d59e3', true); // Result: '295a379b9c5d59e3' - Atention!
+ * strip('295a379b9c5d59e3', true); // Result: '295a379b9c5d59e3' - Attention!
  * ```
  *
  * @export
@@ -97,7 +92,6 @@ function isValid(cpf, isStrict) {
     if (stripped.length !== 11) {
         return false;
     }
-    // CPF can't be blacklisted
     if (REJECT_LIST.includes(stripped)) {
         return false;
     }
