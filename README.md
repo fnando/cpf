@@ -38,7 +38,7 @@ const cpf = require("@fnando/cpf/commonjs");
 import * as cpf from "@fnando/cpf"; // import the whole library
 import { isValid as isValidCpf } from "@fnando/cpf"; // import just one function
 
-// import via <script>; the lib will available as window.cpf
+// import via <script>; the lib will available as window.CPF
 // <script src="cpf.js"></script>
 
 cpf.isValid("532.820.857-96");
